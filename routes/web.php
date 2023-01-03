@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::controller(NewsController::class)->prefix("admin")->group(function(){
     Route::get("news/create", "add");
@@ -33,6 +34,7 @@ Route::controller(AAAController::class)->group(function(){
 //     ProfileController の edit Action に割り当てるように設定してください
 
 Route::controller(ProfileController::class)->prefix("admin")->group(function(){
+    //  Controllerのアクションに割り当てる
     Route::get('profile/create', 'add');
     Route::get('profile/edit', 'edit');
 });
