@@ -11,7 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
+// CSS,JavaScriptを1つのシートにまとめておく
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/admin.scss', 'public/css')
-    .sourceMap();
+    .sass('resources/sass/profile.scss', 'pubile/css')
+    .sourceMaps();

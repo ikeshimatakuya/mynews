@@ -1,3 +1,4 @@
+<!-- 自動生成 -->
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -14,8 +15,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
