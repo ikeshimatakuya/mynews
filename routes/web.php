@@ -23,6 +23,11 @@ Route::controller(NewsController::class)->prefix("admin")->group(function(){
     Route::get("news/create", "add")->middleware('auth');
 });
 
+// プロフィール編集画面にログイン,ログアウトリンクを表示するため
+Route::controller(ProfileController::class)->prefix('admin')->group(function(){
+    Route::get("profile/create", "add")->middleware('auth');
+});
+
 
 // 3. 「http://XXXXXX.jp/XXX というアクセスが来たときに、 AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください
 Route::controller(AAAController::class)->group(function(){
