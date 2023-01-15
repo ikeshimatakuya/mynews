@@ -9,6 +9,14 @@
             <div class="col-md-8 mx-auto">
                 <h2>My プロフィール</h2>
                 <form action = "{{ route('admin.profile.create')}}" method="post" enctype="multipart/form-data">
+                    @if (count($errors) > 0)
+                        <ul>
+                            @foreach($errors->all() as $e)
+                            <!-- $eを順番に表示 -->
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <div class="form-group row">
                         <label class="col-md-2">氏名</label>
                         <div class="col-md-10">

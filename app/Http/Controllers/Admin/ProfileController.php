@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// 以下の一行を追記することでProfile Modelが扱えるようになる
+use App\Models\Profile;
+
 class ProfileController extends Controller
 {
     // 以下に追記
@@ -16,7 +19,7 @@ class ProfileController extends Controller
     public function create(Request $request)
     {
         // laravel課題09記述
-        // validationを行う 「::」->どういう意味？
+        // validationを行う 「::」->どういう意味?
         $this->validate($request, Profile::$rules);
         
         $profile = new Profile;
