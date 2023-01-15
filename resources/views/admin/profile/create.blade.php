@@ -18,7 +18,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
-                            <select class = "formcontrl" name="gender" value="{{old('gender')}}">
+                            <select name="gender">
 	                            <option value="men">男性</option>
 	                            <option value="women">女性</option>
 	                            <option value="others">その他</option>
@@ -34,7 +34,8 @@
                     <div class="form-group row">
                         <label class="col-md-2">自己紹介欄</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="20">{{old('introduction') }}</textarea>
+                            <textarea class="form-control" name="body" rows="20">{{old('introduction') }}</textarea>
+                        </div>
                     </div>
                     @csrf
                     <input type="submit" class="btn btn-primary" value="更新">

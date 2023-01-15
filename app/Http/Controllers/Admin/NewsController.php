@@ -30,6 +30,7 @@ class NewsController extends Controller
             $news->image_path = null;
         }
         
+        // unset()で()内の変数を削除
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
         // フォームから送信されてきたimageを削除する
@@ -38,7 +39,6 @@ class NewsController extends Controller
         // データベースに保存する
         $news->fill($form);
         $news->save();
-        
         return redirect('admin/news/create');
     }
 }
