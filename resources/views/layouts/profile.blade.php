@@ -74,7 +74,6 @@
                             @endguest
                             {{-- 以上までを追記 --}}
                         </ul>
-                        </ul>
                     </div>
                 </div>
             </nav>
