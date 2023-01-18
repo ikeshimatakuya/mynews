@@ -24,7 +24,6 @@ class ProfileController extends Controller
         
         $profiles = new Profile;
         // Profile Modelからデータを取得する
-        $profiles = Profile::find($request->id);
         $form = $request->all();
         
         // フォームから送信されてきた_tokenを削除する
@@ -34,6 +33,17 @@ class ProfileController extends Controller
         $profiles->save();
         
         return redirect('admin/profile/create');
+    }
+    public function index(Request $request){
+        $cond_name = $request->cond_name;
+        if ($cond_name != ''){
+            // 検索されたら検索結果を取得する
+            $posts = Profile::where('name', $cond_name)->get();
+        } else{
+            // それ以外は全てのニュースを取得する
+            $posts = Profile::all();
+        }
+        return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
     }
 
     public function edit(Request $request){
@@ -48,6 +58,17 @@ class ProfileController extends Controller
 
     public function update()
     {
+                // Validationをかける
+        $this->validate($request, Profile::$rules);
+        // News Modelからデータを取得する
+        $profiles = Profile::find($request->id);
+        // 送信されてきたフォームデータを格納する
+        $profiles_form = $request->all();
+        unset($profiles_form['_token']);
+
+        // 該当するデータを上書きして保存する
+        $profiles->fill($profiles_form)->save();
+
         return redirect('admin/profile');
     }
     
