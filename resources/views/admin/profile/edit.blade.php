@@ -7,7 +7,7 @@ extends('layouts.profile')
             <div class="col-md-8 mx-auto">
                 <h2>プロフィールの編集</h2>
                 <!-- ここ考える -->
-                <form action={{ route('admin/profile/update') }} method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin/profile/update') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
