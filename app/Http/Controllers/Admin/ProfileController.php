@@ -22,16 +22,16 @@ class ProfileController extends Controller
         // validationを行う 「::」->どういう意味?
         $this->validate($request, Profile::$rules);
         
-        $profile = new Profile;
+        $profiles = new Profile;
         // Profile Modelからデータを取得する
-        $profile = Profile::find($request->id);
+        $profiles = Profile::find($request->id);
         $form = $request->all();
         
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
         // データベースに保存する
-        $profile->fill($form);
-        $profile->save();
+        $profiles->fill($form);
+        $profiles->save();
         
         return redirect('admin/profile/create');
     }
