@@ -28,18 +28,6 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::get('news/delete', 'delete')->name('news.delete');
 });
 
-/*
-3. 「http://XXXXXX.jp/XXX というアクセスが来たときに、 AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください
-Route::controller(AAAController::class)->group(function(){
-    Route::get('XXX','bbb');
-});
-*/
-
-// 4. 【応用】 前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
-//     web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の add Action に、admin/profile/edit にアクセスしたら 
-//     ProfileController の edit Action に割り当てるように設定してください
-// laravel07課題 ログインしていない状態で/admin/profile/create,/admin/profile/create にアクセスが来たらログイン画面にリダイレクトされるようにする
-
 
 Route::controller(ProfileController::class)->prefix("admin")->name('admin.')->middleware('auth')->group(function(){
     //  Controllerのアクションに割り当てる
