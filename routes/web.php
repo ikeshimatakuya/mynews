@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ->name って何してんの？
+
 Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function (){
     Route::get('news/create', 'add')->name('news.add');
     Route::post('news/create', 'create')->name('news.create');

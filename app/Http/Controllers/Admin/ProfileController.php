@@ -49,26 +49,39 @@ class ProfileController extends Controller
     public function edit(Request $request){
         
         // Profile Modelからデータを取得する
-        $profile = Profile::find($request->id);
-        if (empty($profile)) {
+        $profiles = Profile::find($request->id);
+        if (empty($profiles)) {
             abort(404);
         }
-        return view('admin.profile.edit');
+        return view('admin.profile.edit', ['profiles_form' => $profiles]);
     }
 
     public function update(Request $request)
     {
-                // Validationをかける
+        // Validationをかける
         $this->validate($request, Profile::$rules);
         // News Modelからデータを取得する
         $profiles = Profile::find($request->id);
+        // dd($profiles);
         // 送信されてきたフォームデータを格納する
         $profiles_form = $request->all();
+        // dd($profiles_form);
+        
         unset($profiles_form['_token']);
 
         // 該当するデータを上書きして保存する
         $profiles->fill($profiles_form)->save();
 
         return redirect('admin/profile');
+    }
+        public function delete(Request $request){
+        // 該当するNews Modelを取得
+        $profiles = Profile::find($request->id);
+        // dd($profiles);
+        
+        // 削除する
+        $profiles->delete();
+        
+        return redirect('admin/profile/');
     }
 }

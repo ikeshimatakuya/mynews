@@ -88,7 +88,6 @@ class NewsController extends Controller
 
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
-
         return redirect('admin/news');
     }
     

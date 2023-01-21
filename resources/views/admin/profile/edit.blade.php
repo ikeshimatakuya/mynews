@@ -19,7 +19,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{old('name')}}" >
+                            <input type="text" class="form-control" name="name" value="{{ $profiles_form->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -35,15 +35,17 @@
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="hobby" value="{{old('hobby')}}" >
+                            <input type="text" class="form-control" name="hobby"  value="{{ $profiles_form->hobby }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">自己紹介欄</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="20">{{old('introduction') }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="20">{{ $profiles_form->introduction}}</textarea>
                         </div>
                     </div>
+                    <!--一行下のinput文抜けてたから更新ボタン押してもデータが拾ってこれなかった-->
+                    <input type="hidden" name="id" value="{{ $profiles_form->id }}">
                     @csrf
                     <input type="submit" class="btn btn-primary" value="更新">
                 </form>
