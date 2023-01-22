@@ -28,6 +28,10 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::get('news/delete', 'delete')->name('news.delete');
 });
 
+use App\Http\Controllers\NewsController as PublicNewsController;
+Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
+
+
 
 Route::controller(ProfileController::class)->prefix("admin")->name('admin.')->middleware('auth')->group(function(){
     //  Controllerのアクションに割り当てる
