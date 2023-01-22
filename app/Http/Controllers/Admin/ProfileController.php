@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 // 以下の一行を追記することでProfile Modelが扱えるようになる
 use App\Models\Profile;
+use App\Models\Background;
+
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -34,6 +37,7 @@ class ProfileController extends Controller
         
         return redirect('admin/profile/create');
     }
+    
     public function index(Request $request){
         $cond_name = $request->cond_name;
         if ($cond_name != ''){
@@ -71,9 +75,15 @@ class ProfileController extends Controller
 
         // 該当するデータを上書きして保存する
         $profiles->fill($profiles_form)->save();
+        
+        $background = new Background();
+        $background->profile_id = $profiles->id;
+        $background->edited_at = Carbon::now();
+        $background->save();
 
         return redirect('admin/profile');
     }
+    
         public function delete(Request $request){
         // 該当するNews Modelを取得
         $profiles = Profile::find($request->id);

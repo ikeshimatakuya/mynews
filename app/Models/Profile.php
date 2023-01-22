@@ -17,4 +17,9 @@ class Profile extends Model
         'hobby' => 'required',
         'introduction' => 'required',
         );
+    
+    // Profile Model から $profiles->backgrounds() の記述で簡単にアクセスできる
+    public function backgrounds(){
+        return $this->hasMany('App\Models\Background');
+    }
 }
