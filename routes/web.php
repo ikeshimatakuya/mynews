@@ -43,6 +43,9 @@ Route::controller(ProfileController::class)->prefix("admin")->name('admin.')->mi
     Route::get('profile/delete', 'delete')->name('profile.delete');
 });
 
+use App\Http\Controllers\ProfileController as PublicProfileController;
+Route::get('/', [PublicProfileController::class, 'index'])->name('profile.index');
+
 
 /*
 Route::controller(ProfileController::class)->prefix("admin")->group(function(){
