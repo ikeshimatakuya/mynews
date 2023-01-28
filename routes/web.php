@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\CharacterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,9 +45,18 @@ Route::controller(ProfileController::class)->prefix("admin")->name('admin.')->mi
 });
 
 use App\Http\Controllers\ProfileController as PublicProfileController;
-Route::get('/', [PublicProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
 
 
+
+Route::controller(CharacterController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function() {
+    Route::get('character/create', 'add')->name('character.add');
+    Route::post('character/create', 'create')->name('character.create');
+    Route::get('character','index')->name('character.index');
+    Route::get('character/edit', 'edit')->name('character.edit');
+    Route::post('character/edit','update')->name('character.update');
+    Route::get('character/delete', 'delete')->name('character.delete');
+});
 /*
 Route::controller(ProfileController::class)->prefix("admin")->group(function(){
     //  Controllerのアクションに割り当てる

@@ -16,6 +16,7 @@ class ProfileController extends Controller
         } else{
             $headline = null;
         }
+        return view('profile.index', ['headline' => $headline, 'posts' => $posts]); 
     }
     //
 }

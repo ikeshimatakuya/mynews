@@ -172,7 +172,10 @@ return [
         'name' => '氏名',
         'gender' => '性別',
         'hobby' => '趣味',
-        'introduction' => '自己紹介'
+        'introduction' => '自己紹介',
+        
+        'ch_name' => '名前',
+        'ch_introduction' => 'キャラクター紹介欄'
         ],
 
 ];

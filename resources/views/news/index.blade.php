@@ -11,6 +11,7 @@
                             <div class="caption mx-auto">
                                 <div class="image">
                                     @if ($headline->image_path)
+                                        <!-- 画像を表示-->
                                         <img src="{{ secure_asset('storage/image/' . $headline->image_path) }}">
                                     @endif
                                 </div>
@@ -54,6 +55,5 @@
                 @endforeach
             </div>
         </div>
-    </div>
     </div>
 @endsection
